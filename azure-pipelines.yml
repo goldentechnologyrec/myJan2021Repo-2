@@ -6,35 +6,15 @@
 trigger:
 - main
 
-variables:
+pool: myUbuntuAgentPool
 
-  # Azure Resource Manager connection created during pipeline creation
-  azureSubscription: 'fb6229e3-d5aa-4a90-938c-c19459bfa526'
-
-  # Web app name
-  webAppName: 'myAwesomeWebApp1'
-
-  # Environment name
-  environmentName: 'myAwesomeWebApp1'
-
-  # Agent VM image name
-  vmImageName: 'ubuntu-latest'
-
-  pool: myUbuntuAgentPool
-
-stages:
-- stage: Build
-  displayName: Build stage
-  jobs:
-  - job: MavenPackageAndPublishArtifacts
-    displayName: Maven Package and Publish Artifacts
-    pool:
-      vmImage: $(vmImageName)
-
-    steps:
-    - task: Maven@3
-      displayName: 'Maven Package'
-      inputs:
-        mavenPomFile: 'MyWebApp/pom.xml'
+steps:
+- task: Maven@3
+  inputs:
+      mavenPomFile: 'MyWebApp/pom.xml'
+      publishJUnitResults: true
+      testResultsFiles: '**/surefire-reports/TEST-*.xml'
+      goals: 'package'
+        
 
 
