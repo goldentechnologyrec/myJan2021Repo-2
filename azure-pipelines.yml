@@ -1,8 +1,6 @@
 trigger:
 - main
-#pool: myUbuntuAgentPool
-
-pool: 'ubuntu-latest'
+pool: myUbuntuAgentPool
 
 steps:
 
