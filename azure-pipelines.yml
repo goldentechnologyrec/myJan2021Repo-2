@@ -6,7 +6,7 @@
 trigger:
 - main
 
-pool: myUbuntuAgentPool
+pool: azureBuild
 
 steps:
 - task: Maven@3
