@@ -2,8 +2,7 @@ trigger:
 - main
 #pool: myUbuntuAgentPool
 
-pool:
-vmImage: 'ubuntu-latest'
+pool: 'ubuntu-latest'
 
 steps:
 
